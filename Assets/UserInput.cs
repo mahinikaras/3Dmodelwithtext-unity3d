@@ -65,9 +65,9 @@ public class UserInput : MonoBehaviour
             TextTest.Instance.PrintPos();
 
 
-            if (emojiName == EmojiName.happyFace) {  titleText.text = titleText.text.Replace("<sprite=5>", "        ");}
-            if (emojiName == EmojiName.loveEyed) { titleText.text = titleText.text.Replace("<sprite=2>", "        ");}
-            if (emojiName == EmojiName.glassEyed) { titleText.text = titleText.text.Replace("<sprite=3>", "        ");}
+            if (emojiName == EmojiName.happyFace) {  titleText.text = titleText.text.Replace("<sprite=5>", "        "); }
+            if (emojiName == EmojiName.loveEyed) { titleText.text = titleText.text.Replace("<sprite=2>", "        "); }
+            if (emojiName == EmojiName.glassEyed) { titleText.text = titleText.text.Replace("<sprite=3>", "        "); }
 
         }
     }
