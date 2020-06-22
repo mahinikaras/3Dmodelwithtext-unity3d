@@ -2,9 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class TextTest : MonoBehaviour
+public class LetterPositionTracker : MonoBehaviour
 {
-	public static TextTest Instance;
+	public static LetterPositionTracker Instance;
 	public Text textComp;
 	public int charIndex;
 	public Canvas canvas;
@@ -14,7 +14,7 @@ public class TextTest : MonoBehaviour
 	{
 		if (!Instance) Instance = this;
 	}
-	public void PrintPos ()
+	public void FindPos ()
 	{
 		//charIndex = textComp.text.Length - 1 ;
 		string text = textComp.text;
@@ -32,33 +32,29 @@ public class TextTest : MonoBehaviour
 		int indexOfTextQuad = (charIndex * 4) + (newLine * 4) - 4;
 		if (indexOfTextQuad < textGen.vertexCount)
 		{
-			Vector3 avgPos = (textGen.verts[indexOfTextQuad].position + 
-				textGen.verts[indexOfTextQuad + 1].position + 
-				textGen.verts[indexOfTextQuad + 2].position + 
+			Vector3 avgPos = (textGen.verts[indexOfTextQuad].position +
+				textGen.verts[indexOfTextQuad + 1].position +
+				textGen.verts[indexOfTextQuad + 2].position +
 				textGen.verts[indexOfTextQuad + 3].position) / 4f;
 
-			print (avgPos);
-			PrintWorldPos (avgPos);
+			print(avgPos);
+			FindWorldPos(avgPos);
 		}
 		else {
 			Debug.LogError ("Out of text bound");
 		}
 	}
 
-	void PrintWorldPos (Vector3 testPoint)
+	void FindWorldPos (Vector3 testPoint)
 	{
 		worldPos = textComp.transform.TransformPoint (testPoint);
 		UserInput.Instance.LoadPrefab(worldPos);
 		print (worldPos);
-		new GameObject ("point").transform.position = worldPos;
-		Debug.DrawRay (worldPos, Vector3.up, Color.red, 50f);
+
+
+		/*new GameObject ("point").transform.position = worldPos;
+		Debug.DrawRay (worldPos, Vector3.up, Color.red, 50f);*/
 	}
 
-	/*void OnGUI ()
-	{
-		if (GUI.Button (new Rect (10, 10, 100, 80), "Test"))
-		{
-			PrintPos ();
-		}
-	}*/
+
 }
